@@ -1,0 +1,141 @@
+1.创建本地管理仓库,指定当前目录为git管理仓库，生成.git文件夹    
+git init
+
+2.预添加提交版本库文件(将文件提交到暂存区)    -A提交所有问git status文件
+git add 文件名
+多个文件以空格隔开
+
+3.提交文件到本地版本库
+git commit -m "注释"
+
+4.查看git文件修改状态 //  1.未追踪文件 “Untracked files”  2.已修改的文件 modified  3.预提交文件  Changes to be committed  
+git status 
+
+5.查看文件修改内容
+git diff 文件名
+
+6.查看提交版本log
+git log
+
+7.回滚历史版本
+git reset --hard 版本号   
+
+8.记录每条操作命令log
+git reflog
+
+9.撤销工作区已修改（modified )的所有内容
+git checkout -- 文件名
+
+10.撤销暂存区文件
+git reset 文件名 //回退指定文件
+git reset      //回退所有文件
+
+11.删除文件       //可以先手动删除工作区的文件，也可以直接git rm删除        然后 git commit提交
+git rm 文件名    //将删除加入暂存区
+git commit -m 注释   //提交到本地库
+
+
+
+//远程分支操作
+
+13.添加关联远程仓库
+git remote add origin 远程仓库地址  //origin为远程仓库名  
+
+13.查看远程仓库信息
+git remote
+
+13.显示远程仓库更详细信息
+git remote -v
+
+14.将本地分支最新版本更新至远程分支
+git push -u origin master   //将本地master 分支推送至远程仓库origin的master分支  并关联两个master分支
+git push origin master   //把本地master分支的最新修改推送至远程分支
+
+15.从远程仓库克隆
+git clone 远程仓库地址
+
+15.从远程仓库更新当前分支最新版本
+git pull
+
+15.删除远程分支
+git remote rm 分支名
+
+
+15.在本地创建和远程分支对应的分支，本地和远程分支的名称最好一致
+git checkout -b 本地分支名 origin/远程分支名
+
+15.建立本地分支和远程分支的关联
+git branch --set-upstream 本地分支名 origin/远程分支名
+
+
+//分支操作
+16.查看本地分支
+git branch
+ 
+17.查看远程分支
+git branch -r 
+
+18.创建分支
+git branch 分支名
+
+19.切换分支
+git checkout 分支名 
+
+20.创建并切换分支
+git checkout -b 分支名
+
+21.合并某分支到当前分支
+git merge 分支名
+
+22.合并后删除无用分支
+git branch -d 分支名
+
+23.删除没有合并的无用分支
+git branch -D 分支名
+
+23.将当前工作区修改暂且无法提交的内容隐藏  ，
+方便创建bug分支修复bug，修复后显示。
+git stash
+
+24.查看工作区隐藏修改的列表信息
+git stash list
+
+25.还原工作区隐藏的修改,并删除 stash list的信息
+git stash pop
+
+
+
+
+
+
+Git Bash  密钥  用于git ssh     
+ssh-keygen -t rsa -C "402850544@qq.com"  //   -t  指定密钥类型  rsa （ssh2）       -C  提供一个新注释    
+
+
+
+//git忽略文件或文件夹  步骤
+1.在仓库中创建隐藏文件夹".gitignore"
+2.仓库右键 git bash here
+2.执行命令 touch .gitignore
+3.文件中加入需要忽略的目录或者文件
+
+
+
+//git 分支管理准责
+在实际开发中，我们应该按照几个基本原则进行分支管理：
+
+首先，master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；
+
+那在哪干活呢？干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；
+
+你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。
+
+//分支同步准则
+master分支是主分支，因此要时刻与远程同步；
+
+dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；
+
+bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
+
+feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发
+

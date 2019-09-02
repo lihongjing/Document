@@ -1,0 +1,15 @@
+
+show variables  LIKE "character_set_database"
+show CREATE TABLE mdc_equipment_calendar
+show FULL COLUMNS  FROM mdc_doctor_calendar
+
+
+ALTER TABLE mdc_equipment_calendar_define CHARACTER SET utf8
+
+ALTER TABLE mdc_equipment_calendar_define CONVERT TO CHARACTER SET utf8
+
+SELECT @@tx_isolation; //查看数据库隔离级别
+show engines； //查看数据库类型
+
+start transaction; //开启事物
+commit; //提交事物

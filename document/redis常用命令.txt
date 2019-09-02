@@ -1,0 +1,76 @@
+//key操作
+keys pattern ##匹配模式的键列表
+del key1 key2... ##删除key
+exists key##key是否存在
+move key db##将key移动到db
+rename key newkey##重命名，如果newkey已存在，覆盖
+renamenx key newkey ##如果newkey已存在，则返回0 ，  0失败/1成功
+persist key##如果key存在过期时间，此命令将过期时间消除，持久化存储  1过期时间被移除/0key不存在过期时间
+expire key seconds ##设置key超时时间为seconds
+expireat key timestamp ##与expire相同，区别在于timestamp为绝对时间，即1970年1月1日开始所流经的秒数
+ttl key##获取改键所剩的超时描述
+randomkey ##从当前数据库中随机返回一个key
+type key ##获取此键返回的值的类型，list/set/hash/zset
+
+
+
+//字符串操作
+set key value ##创建一个key对应value
+get key ##根据key取value
+del key ##根据指定key删除
+exists key ##判断key是否存在
+
+append key value ##追加字符串
+getrange key start end ##获取start与end之间的字符串
+setrange key start value ##修改start位置之后的value
+
+//字符串做整型和浮点型
+incrby key amount ##将key的值加amount
+decrby key amount ##将key的值减amount
+incrbyfloat key amount ##将key的值加amount，amount可以为浮点数
+
+//list操作
+rpush key value ##从右边插入一个value
+lpush key value ##从左边开始插入一个value
+lrange key start end ##取start与end 下标区间的值
+lindex key index ##取index的值
+rpop key ##取出右边头部的值并删除此数据
+lpop key ##取出左边头部的值并删除此数据
+llen key ##返回list长度
+ 
+//list高级命令
+ltrim key start end ##删除start与end范围之外的元素
+##将value插入到列表中，位于值pivot之前，当pivot不存在或者key不存在时不执行任何操作
+linsert key before pivot value 
+##将value插入到列表中，位于值pivot之后，当pivot不存在或者key不存在时不执行任何操作
+linsert key after pivot value
+llset key index value ##将列表index的元素设置为value
+##将"source" key右边头部元素返回并删除，同时将这个元素添加到“destination” key的列表头部元素
+rpoplpush source destination 
+##是lpop的阻塞版本，当key列表中没有元素可供lpop的时候，连接将被blpop阻塞等待，直到取到元素释放，否则timeout超时后释放
+blpop key timeout 
+##rpop的阻塞版本，当key列表中没有元素可供rpop的时候，连接将被brpop阻塞等待，直到取到元素释放，否则timeout超时后释放
+brpop key timeout
+##rpoplpush的阻塞版本，当"source" key为空时将阻塞等待，直到有值后执行lpush“destination”key 释放，否则timeout超时后释放
+brpoplpush source destination
+
+//set操作
+sadd key value0 value1 ##将某个/多个元素加入key所代表的set
+srem key value0 value1 ##将某个/多个元素从key所代表的set中删除
+sismeber key value ##判断value是否是key set中的元素  ，0否/1是
+smembers key value ##返回key set中的所有元素
+scard key  ##返回key所代表的set元素个数
+srandmember key ##返回key所代表set中的一个随机元素
+spop key##随机删除并返回key所代表set中的一个元素
+
+//多个set操作
+smove key1 key2 value ##将value元素从key1 所代表的set中移动到key2所代表的set中
+sinter key1 key2 ... ##返回一个set的全部成员，该set是所有set的交集
+sinterstore key3 key1 key2...##创建key3将key1,key2..的交集加入key3并返回
+sunion key1 key2...##返回一个set的全部成员，该set是所有set的并集
+sunionstore key3 key1 key2...##创建key3将key1,key2..的并集加入key3并返回
+ddiff key1 key2...##返回所有key的差集，注：key1与key2 ,key2与key1返回的差集不同
+sdiffstore key3 key1 key2..##返回一个set的全部成员，该set是所有set的差集，注：key1与key2 ,key2与key1返回的差集不同
+
+
+

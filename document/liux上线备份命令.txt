@@ -1,0 +1,25 @@
+------start
+
+将目录/opt/tomcat-7.0.59/webapps/下的onlineApp文件夹及其子文件压缩备份到指定目录/opt/bak/下，
+生成例如名字为：onlineApp.2015-01-01.tar.gz 的压缩包。
+
+tar czvf /opt/bak/onlineApp.`date +%Y-%m-%d`.tar.gz /opt/tomcat-7.0.59/webapps/onlineApp
+
+
+
+tar czvf /opt/bak/online.`date +%Y-%m-%d`.tar.gz /opt/tomcat-7.0.59/webapps/online
+
+tar czvf /opt/bak/mis.`date +%Y-%m-%d`.tar.gz /opt/tomcat-7.0.59/webapps/mis
+
+
+
+
+将目录/opt/bak下的onlineApp.2015-01-01.tar.gz压缩文件解压到执行命令的当前目录下（-C指定解压目录）。
+
+tar xzvf /opt/bak/onlineApp.2015-01-01.tar.gz -C /
+
+将目录/opt/bak下的onlineApp.2015-01-01.tar.gz压缩文件解压到：执行命令的当前目录/newfile/view/目录下。
+
+tar xzvf /opt/bak/onlineApp.2015-01-01.tar.gz -C /newfile/view
+
+------end

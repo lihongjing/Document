@@ -1,0 +1,10 @@
+mvn deploy:deploy-file -Dmaven.test.skip=true -Dfile=D:\dev\m2\org\elasticsearch\jdbc\elasticsearch-jdbc\2.2.0.0\elasticsearch-jdbc-2.2.0.0-uberjar.jar -DgroupId=org.elasticsearch.jdbc -DartifactId=elasticsearch-jdbc -Dversion=2.2.0.0-SNAPSHOT -Dpackaging=jar -DrepositoryId=thirdparty -Durl=http://10.0.60.169:8081/nexus/content/groups/public
+
+
+
+mvn install:install-file -Dfile=C:\Users\lihongjing\Desktop\新建文件夹2\elasticsearch-jdbc-2.2.0.0-uberjar.jar -DgroupId=org.elasticsearch.jdbc -DartifactId=elasticsearch-jdbc -Dversion=2.2 -Dpackaging=jar
+
+
+
+
+mvn install:install-file -Dfile=C:\Users\lihongjing\Desktop\新建文件夹2\jdbc-driver-csv-1.0.0.jar -DgroupId=org.xbib.jdbc -DartifactId=jdbc-driver-csv -Dversion=1.0.0 -Dpackaging=jar

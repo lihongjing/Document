@@ -1,0 +1,44 @@
+ctrl+z撤销
+ctrl+shift+z撤销恢复
+ctrl+shif+e最近更改的文件
+Shift+F6，重构 – 重命名
+Ctrl+/或Ctrl+Shift+/，注释（//或者/**/）
+Ctrl+Shift+Space，自动补全代码，包括可能出现的代码提示与符号等
+ctrl+shift+ent，自动补全代码，仅补全括号符号等
+alt+ent导包修正，代码修正补全等
+Ctrl+Shift+U，大小写转化
+Ctrl+Shift+J，整合两行，两行合到一行
+
+ctrl+n查找类
+ctrl+f查找内容文本
+ctrl+r替换内容文本
+ctrl+shift+f全局查找文本内容
+ctrl+shift+r全局替换文本
+Ctrl+Shift+Alt+N，查找类中的方法或变量
+ctrl+alt+b查看实现方法
+
+
+crtl+u转到父类
+ctrl+tab切换类
+alt+方位键 左右切换类
+
+
+Alt+Insert，可以生成构造器/Getter/Setter等
+
+
+Alt+F8，计算变量值 查看断点值
+
+
+
+  Top #10切来切去：Ctrl+Tab
+   Top #9选你所想：Ctrl+W
+   Top #8代码生成：Template/Postfix +Tab
+   Top #7发号施令：Ctrl+Shift+A
+   Top #6无处藏身：Shift+Shift
+   Top #5自动完成：Ctrl+Shift+Enter
+   Top #4创造万物：Alt+Insert
+太难割舍，前三名并列吧！
+   Top #1智能补全：Ctrl+Shift+Space
+   Top #1自我修复：Alt+Enter
+   Top #1重构一切：Ctrl+Shift+Alt+T
+ 

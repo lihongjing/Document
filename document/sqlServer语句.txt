@@ -1,0 +1,6 @@
+//表结构     SysObjects/表名
+sp_columns SysObjects;
+//模糊查询表名  
+Select * From SysObjects Where Name Like '%%' ;
+//查询某天建表
+Select * From SysObjects sy Where Name Like '%%' AND convert(varchar,crdate,120) like '%2017-09-28%';

@@ -1,0 +1,71 @@
+#创建文件夹用作Elasticsearch备份仓库：
+mkdir /usr/local/suninfo/siem/backup
+#赋权限
+chmod 777 /usr/local/suninfo/siem/backup
+
+
+在elasticsearch.yml文件中增加path.repo路径配置：
+
+
+$ vim /usr/local/suninfo/siem/elasticsearch/config/elasticsearch.yml
+加上这个配置：
+path.repo: ["/usr/local/suninfo/siem/backup"]
+
+
+重启elasticsearch
+
+
+
+
+
+
+#----------------------------------创建仓库------------------------------------------
+curl -XPUT 'http://192.168.211.50:9200/_snapshot/my_backup' -d '{
+    "type": "fs",
+    "settings": {
+"compress" : "true",
+        "location": "/usr/local/suninfo/siem/backup/my_backup"
+    }
+}'
+#----------------------------------查看仓库------------------------------------------
+curl -XGET 'http://192.168.211.50:9200/_snapshot/my_backup?pretty'
+
+
+
+
+#----------------------------------备份索引------------------------------------------
+curl -XPUT 'http://192.168.211.50:9200/_snapshot/my_backup/snapshot_1'    // 备份所有
+
+
+curl -XPUT 'http://192.168.211.50:9200/_snapshot/my_backup/snapshot_1' -d '{
+    "indices": "users",
+    "ignore_unavailable": "true",
+    "include_global_state": false,
+    "partial": "false"
+}'
+
+
+#----------------------------------查看备份------------------------------------------
+curl -XGET 'http://10.10.0.94:9200/_snapshot/my_backup/snapshot_1'
+curl -XGET 'http://127.0.0.1:9200/_snapshot/my_backup/snapshot_1/_status'
+
+
+
+
+
+
+#----------------------------------恢复索引------------------------------------------
+curl -XPOST 'http://10.10.0.94:9200/_snapshot/my_backup/snapshot_1/_restore' -d '{
+    "indices": "renewal_v1",
+    "ignore_unavailable": "true",
+    "include_global_state": false,
+    "rename_pattern": "index_(.+)",
+    "rename_replacement": "restored_index_$1"
+}'
+
+
+
+
+#----------------------------------删除备份------------------------------------------
+curl -XDELETE 'http://127.0.0.1:9200/_snapshot/my_backup/snapshot_1'
+个人分类： 大数据
