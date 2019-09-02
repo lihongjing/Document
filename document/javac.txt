@@ -1,0 +1,17 @@
+﻿javac -d . A.java ##编译java文件，带包路径
+java com.jiao.baba.MainTest ##运行java程序main方法
+java -cp .;C:\Users\lihongjing\Desktop\java\b\excel-util-1.2.4.jar com.jiao.baba.MainTest ##运行java程序main方法 指定依赖jar包
+jar cvfm eltosql.jar ./META-INF/MANIFEST.MF com ##java打包，指定主类清单文件以及依赖文件,指定MANIFEST.MF文件
+
+jar -cvf A.jar A.class  ##打jar包   v显示详细信息,A.class可以是目录，如java -cvf A.jar com，*    或  */.(是打包多级目录)
+javac -cp .;C:\Users\lihongjing\Desktop\java\b\test\a.jar A.java ## 编译java文件，指定依赖jar包,多个jar用分毫隔开  
+javac -encoding utf-8 A.java ##java编译指定编码
+
+javac -encoding utf-8 -d bin -sourcepath src -classpath .;lib/excel-util-1.2.4.jar @sourcelist.txt ## 编译多个java文件,一次编译sourcelist文件内的java文件
+
+
+
+
+
+##https://www.cnblogs.com/zhangchao0515/p/9534806.html ##教程
+
