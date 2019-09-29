@@ -34,5 +34,26 @@ CREATE UNIQUE INDEX COU_INDEX ON CC_LEVFIV_COU(CAL_FV,PRE_DATE);
 DROP INDEX COU_INDEX
 
 --查看数据库版本
-SELECT service_level, fixpack_num FROM TABLE (sysproc.env_get_inst_info());
+SELECT service_level, fixpack_num FROM TABLE (sysproc.env_get_inst_info
+
+--查询异常
+SELECT
+    tabschema,
+    tabname,
+    colname
+FROM
+    syscat.columns
+WHERE
+    colno = 1
+AND (
+        tabschema, tabname ) IN
+    (
+        SELECT
+            tabschema,
+            tabname
+        FROM
+            syscat.tables
+        WHERE
+            tbspaceid = 3
+        AND tableid = 562 )
 
